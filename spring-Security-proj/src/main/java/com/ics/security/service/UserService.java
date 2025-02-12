@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ics.security.dto.LoginReq;
@@ -19,6 +20,9 @@ public class UserService {
 	private  UserRepository userRepository;
 	
 	@Autowired
+	private PasswordEncoder encoder;
+	
+	@Autowired
 	private ModelMapper modelMapper;
 	
 	public User createUser(UserDTO dto) throws Exception {
@@ -29,6 +33,7 @@ public class UserService {
 			throw new Exception(String.format("User with the email address '%s' already exists.", email));
 		}
 		User user = modelMapper.map(dto, User.class);
+		user.setPassword(encoder.encode(dto.getPassword()));
 		return userRepository.save(user);
 	}
 	

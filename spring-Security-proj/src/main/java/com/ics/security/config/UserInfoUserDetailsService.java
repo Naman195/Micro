@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import com.ics.security.entity.User;
-import com.ics.security.repository.UserInfoUserDetails;
 import com.ics.security.repository.UserRepository;
 
 @Component

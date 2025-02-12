@@ -1,4 +1,4 @@
-package com.ics.security.repository;
+package com.ics.security.config;
 
 import java.util.Arrays;
 import java.util.Collection;
